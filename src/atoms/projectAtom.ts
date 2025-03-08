@@ -8,12 +8,13 @@ export type Project = {
 
 export const projectAtom = atom<Project[]>([
   {
-    id: "docker",
+    // <project id> ::= <team id> "/" <artifact id>
+    id: "docker/engine",
     url: "/oas/docker/engine/v1.25/swagger.yaml",
     active: false,
   },
   {
-    id: "google",
+    id: "google/calendar",
     url: "/oas/google/calendar/v3/swagger.yaml",
     active: true,
   },
@@ -54,4 +55,11 @@ export const projectActiveSpecUrlAtom = atom((get) => {
 export const projectSelectOptionsAtom = atom((get) => {
   const projects = get(projectAtom);
   return projects.map((p) => ({ key: p.id, value: p.url }));
+});
+
+// Generate a active route path with the format `/oas/${projectId}/1234567890abcdef`
+export const projectActiveRoutePathAtom = atom((get) => {
+  const projects = get(projectAtom);
+  const activeProject = projects.find((p) => p.active);
+  return activeProject ? `/oas/${activeProject.id}/1234567890abcdef` : null;
 });

@@ -9,7 +9,7 @@ import {
   loadSpecUrlChangedEffect,
 } from "../atoms/swaggerPreviewerAtom";
 
-export const SwaggerPreviewer = () => {
+export const ProjectSwaggerFile = () => {
   useAtom(loadSpecUrlChangedEffect);
   const [specUrl] = useAtom(swaggerPreviewerSpecUrlAtom);
   const [, setIsPreviewerLoading] = useAtom(swaggerPreviewerIsLoadingAtom);

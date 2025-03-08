@@ -6,6 +6,7 @@ import jotaiReactRefresh from "jotai/babel/plugin-react-refresh";
 
 // https://vite.dev/config/
 export default defineConfig({
+  appType: "spa",
   plugins: [
     react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
     tailwindcss(),
