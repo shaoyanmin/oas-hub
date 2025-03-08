@@ -3,14 +3,11 @@ import { projectActiveAtom } from "./projectAtom";
 import { atomEffect } from "jotai-effect";
 
 export type swaggerPreviewer = {
-  fileMode: "raw" | "machine-improved"; // version of the file (raw source or enhanced by AI model)
-  // language: "ja" | "en"; // language selection
   specUrl: string | null;
   isLoading: boolean;
 };
 
 export const swaggerPreviewerAtom = atom<swaggerPreviewer>({
-  fileMode: "raw",
   specUrl: null,
   isLoading: false,
 });

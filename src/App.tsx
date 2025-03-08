@@ -1,6 +1,6 @@
 import "./App.css";
 import { ProjectHeader } from "./components/ProjectHeader";
-import { ProjectSwaggerFile } from "./components/ProjectSwaggerFile";
+import { ProjectSwaggerFilePreviewer } from "./components/ProjectSwaggerFilePreviewer";
 import { ProjectSwaggerFileChangelog } from "./components/ProjectSwaggerFileChangelog";
 import { Initializing } from "./components/Initializing";
 import { BrowserRouter, Routes, Route } from "react-router";
@@ -16,7 +16,7 @@ const App = () => {
           />
           <Route
             path=":teamId/:artifactId/:version"
-            element={<ProjectSwaggerFile />}
+            element={<ProjectSwaggerFilePreviewer />}
           />
         </Route>
         <Route path="*" element={<Initializing />} />

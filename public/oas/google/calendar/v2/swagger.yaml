@@ -12,7 +12,7 @@ info:
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
   title: Calendar API
-  version: v3
+  version: v2
   x-apiClientRegistration:
     url: https://console.developers.google.com
   x-apisguru-categories:
@@ -791,6 +791,11 @@ paths:
           name: supportsAttachments
           schema:
             type: boolean
+        - description: Test.
+          in: query
+          name: foo
+          schema:
+            type: number
       requestBody:
         content:
           application/json:
@@ -1167,7 +1172,6 @@ paths:
       - $ref: "#/components/parameters/oauth_token"
       - $ref: "#/components/parameters/prettyPrint"
       - $ref: "#/components/parameters/quotaUser"
-      - $ref: "#/components/parameters/userIp"
     patch:
       description: Updates an event. This method supports patch semantics.
       operationId: calendar.events.patch

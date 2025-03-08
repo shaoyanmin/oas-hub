@@ -1,0 +1,16 @@
+{
+  "teamId": "docker",
+  "artifactId": "engine",
+  "versionHistory": [
+    {
+      "version": "v1.26",
+      "timestamp": "2025-12-01T10:00:00Z",
+      "commitHash": ""
+    },
+    {
+      "version": "v1.25",
+      "timestamp": "2022-12-10T15:30:00Z",
+      "commitHash": ""
+    }
+  ]
+}

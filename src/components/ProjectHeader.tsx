@@ -65,22 +65,6 @@ export const ProjectHeader = () => {
             </div>
 
             <div>
-              <label htmlFor="mode" className="ml-2 mr-4">
-                Mode
-              </label>
-              <select
-                id="mode"
-                className="border rounded px-2 py-1 mr-4 text-sm"
-                value="v2"
-                disabled={isLoading}
-              >
-                <option value="">Select a file mode</option>
-                <option value="v1">Original</option>
-                <option value="v2">Machine enhanced</option>
-              </select>
-            </div>
-
-            <div>
               <a
                 onClick={() =>
                   activeRoutePath &&
@@ -90,13 +74,11 @@ export const ProjectHeader = () => {
                       : `${activeRoutePath}/changelog`,
                   )
                 }
+                href="#"
+                aria-disabled={isLoading}
                 className="mr-4"
               >
-                <label>
-                  {location.pathname.includes("changelog")
-                    ? "Back"
-                    : "Changelog"}
-                </label>
+                {location.pathname.includes("changelog") ? "Back" : "Changelog"}
               </a>
             </div>
           </div>

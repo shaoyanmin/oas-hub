@@ -1,0 +1,21 @@
+{
+  "teamId": "google",
+  "artifactId": "calendar",
+  "versionHistory": [
+    {
+      "version": "v4",
+      "timestamp": "2025-12-01T10:00:00Z",
+      "commitHash": ""
+    },
+    {
+      "version": "v3",
+      "timestamp": "2022-12-10T15:30:00Z",
+      "commitHash": ""
+    },
+    {
+      "version": "v2",
+      "timestamp": "2020-12-15T09:15:00Z",
+      "commitHash": ""
+    }
+  ]
+}

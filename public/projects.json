@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "name": "Google Calendar",
+      "teamId": "google",
+      "artifactId": "calendar",
+      "repositoryUrl": ""
+    },
+    {
+      "name": "Docker Engine",
+      "teamId": "docker",
+      "artifactId": "engine",
+      "repositoryUrl": ""
+    }
+  ]
+}

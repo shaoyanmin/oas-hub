@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-white: #f8f9fa;
+}
 
 body {
   margin: 0;

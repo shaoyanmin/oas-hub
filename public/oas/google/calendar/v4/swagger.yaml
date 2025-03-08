@@ -12,7 +12,7 @@ info:
     url: http://creativecommons.org/licenses/by/3.0/
   termsOfService: https://developers.google.com/terms/
   title: Calendar API
-  version: v3
+  version: v4
   x-apiClientRegistration:
     url: https://console.developers.google.com
   x-apisguru-categories:
