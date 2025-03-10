@@ -1,18 +1,14 @@
 import { atom } from "jotai";
-import { projectActiveIdAtom } from "./projectAtom";
+import { observe } from "jotai-effect";
+import { atomWithStorage } from "jotai/utils";
+import {
+  projectActiveIdAtom,
+  teamActiveIdAtom,
+  artifactActiveIdAtom,
+} from "./projectAtom";
 import { versionActiveIdAtom } from "./changelogAtom";
 import { generateOASSpecUrl } from "../utils/oasMapper";
 import { Previewer } from "../models/previewer";
-
-// const previewerCache = atom<{
-//   activeTeamId: string | null;
-//   activeArtifactId: string | null;
-//   activeVersionId: string | null;
-// }>({
-//   activeTeamId: null,
-//   activeArtifactId: null,
-//   activeVersionId: null,
-// });
 
 const previewerAtom = atom<Previewer>({
   isLoading: false,
@@ -34,18 +30,43 @@ export const previewerIsLoadingAtom = atom(
     const previewer = get(previewerAtom);
     return previewer.isLoading;
   },
-  (get, set, newValue: boolean) => {
+  (get, set, isLoading: boolean) => {
     const previewer = get(previewerAtom);
     const specUrl = get(previewerSpecUrlAtom);
 
-    if (previewer.specUrl !== specUrl && newValue === true) {
+    if (previewer.specUrl !== specUrl && isLoading === true) {
       set(previewerAtom, { ...previewer, isLoading: true, specUrl });
-    } else if (previewer.specUrl === specUrl && newValue === false) {
+    } else if (previewer.specUrl === specUrl && isLoading === false) {
       set(previewerAtom, { ...previewer, isLoading: false });
     } else {
-      // Suppose the same URL only will ben rendered ONLY once
-      // Then only set true when changed, and set false when rendered,
-      // and ignore all following events after the first false
+      // Each URL should only be rendered once.
+      // Set loading state to true when URL changes,
+      // set to false after initial render,
+      // then ignore subsequent events.
     }
   },
 );
+
+export const lastSuccessfulLoadingConfigAtom = atomWithStorage<{
+  teamId: string | null;
+  artifactId: string | null;
+  versionId: string | null;
+}>("__OAS_HUB__lastSuccessfulLoadingConfig", {
+  teamId: null,
+  artifactId: null,
+  versionId: null,
+});
+
+observe((get, set) => {
+  const teamId = get(teamActiveIdAtom);
+  const artifactId = get(artifactActiveIdAtom);
+  const versionId = get(versionActiveIdAtom);
+  const isLoading = get(previewerIsLoadingAtom);
+  if (teamId && artifactId && versionId && !isLoading) {
+    set(lastSuccessfulLoadingConfigAtom, {
+      teamId: teamId,
+      artifactId: artifactId,
+      versionId: versionId,
+    });
+  }
+});

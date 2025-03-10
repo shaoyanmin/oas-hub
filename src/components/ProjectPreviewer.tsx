@@ -32,6 +32,9 @@ export const ProjectPreviewer = () => {
           pathInMiddlePanel: true,
           showObjectSchemaExamples: true,
           showExtensions: true,
+          hideSecuritySection: true,
+          disableSearch: true,
+          nativeScrollbars: true,
         }}
         onLoaded={() => {
           setPreviewIsLoading(false);
