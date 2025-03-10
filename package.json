@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.11",
+    "@tanstack/query-core": "^5.67.2",
     "jotai": "^2.12.1",
-    "jotai-effect": "^2.0.1",
+    "jotai-tanstack-query": "^0.9.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",

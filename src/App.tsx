@@ -1,8 +1,8 @@
 import "./App.css";
 import { ProjectHeader } from "./components/ProjectHeader";
-import { ProjectSwaggerFilePreviewer } from "./components/ProjectSwaggerFilePreviewer";
-import { ProjectSwaggerFileChangelog } from "./components/ProjectSwaggerFileChangelog";
-import { Initializing } from "./components/Initializing";
+import { ProjectPreviewer } from "./components/ProjectPreviewer";
+import { ProjectChangelog } from "./components/ProjectChangelog";
+import { InitializingPage } from "./components/InitializingPage";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 const App = () => {
@@ -11,15 +11,15 @@ const App = () => {
       <Routes>
         <Route path="oas" element={<ProjectHeader />}>
           <Route
-            path=":teamId/:artifactId/:version/changelog"
-            element={<ProjectSwaggerFileChangelog />}
+            path=":teamId/:artifactId/changelog"
+            element={<ProjectChangelog />}
           />
           <Route
             path=":teamId/:artifactId/:version"
-            element={<ProjectSwaggerFilePreviewer />}
+            element={<ProjectPreviewer />}
           />
         </Route>
-        <Route path="*" element={<Initializing />} />
+        <Route path="*" element={<InitializingPage />} />
       </Routes>
     </BrowserRouter>
   );

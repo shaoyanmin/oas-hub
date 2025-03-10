@@ -2,9 +2,9 @@ import React from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "../styles/markdown-body.css";
-const mdFileUrl = "http://localhost:5173/oas/google/calendar/v3/diff.md";
+const mdFileUrl = "/oas/docker/engine/v1.26/diff.md";
 
-export const ProjectSwaggerFileChangelog = () => {
+export const ProjectChangelog = () => {
   const [markdown, setMarkdown] = React.useState("");
 
   React.useEffect(() => {
