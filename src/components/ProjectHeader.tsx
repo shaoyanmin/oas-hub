@@ -6,7 +6,7 @@ import { useActiveTeamSelect } from "../hooks/useActiveTeamSelect";
 import { useActiveArtifactSelect } from "../hooks/useActiveArtifactSelect";
 import { useActiveVersionSelect } from "../hooks/useActiveVersionSelect";
 import { useOASRoutes } from "../hooks/useOASRoutes";
-import { ProjectHeaderSelect } from "./ProjectHeaderSelector";
+import { ProjectHeaderSelect } from "./ProjectHeaderSelect";
 
 export const ProjectHeader = () => {
   useInitializeFromUrlParams();

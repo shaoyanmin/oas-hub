@@ -8,12 +8,14 @@ import { useEffect } from "react";
 import {
   previewerIsLoadingAtom,
   previewerSpecUrlAtom,
+  previewerRenderConfigAtom,
 } from "../atoms/previewerAtom";
 
 export const ProjectPreviewer = () => {
   const [specUrl] = useAtom(previewerSpecUrlAtom);
   const [, setPreviewIsLoading] = useAtom(previewerIsLoadingAtom);
   const cachedSpecUrl = useMemo(() => specUrl, [specUrl]);
+  const [config] = useAtom(previewerRenderConfigAtom);
 
   useEffect(() => {
     if (specUrl) {
@@ -26,16 +28,7 @@ export const ProjectPreviewer = () => {
     cachedSpecUrl && (
       <RedocStandalone
         specUrl={cachedSpecUrl}
-        options={{
-          hideDownloadButton: true,
-          expandResponses: "200,201",
-          pathInMiddlePanel: true,
-          showObjectSchemaExamples: true,
-          showExtensions: true,
-          hideSecuritySection: true,
-          disableSearch: true,
-          nativeScrollbars: true,
-        }}
+        options={config}
         onLoaded={() => {
           setPreviewIsLoading(false);
           // console.log("Previewer end loading.");

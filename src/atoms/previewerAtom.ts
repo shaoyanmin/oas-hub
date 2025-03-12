@@ -1,6 +1,7 @@
 import { atom } from "jotai";
 import { observe } from "jotai-effect";
 import { atomWithStorage } from "jotai/utils";
+import { RedocRawOptions } from "redoc";
 import {
   projectActiveIdAtom,
   teamActiveIdAtom,
@@ -47,11 +48,11 @@ export const previewerIsLoadingAtom = atom(
   },
 );
 
-export const lastSuccessfulLoadingConfigAtom = atomWithStorage<{
+export const lastSuccessfulLoadedConfigAtom = atomWithStorage<{
   teamId: string | null;
   artifactId: string | null;
   versionId: string | null;
-}>("__OAS_HUB__lastSuccessfulLoadingConfig", {
+}>("__OAS_HUB__lastSuccessfulLoadedConfig", {
   teamId: null,
   artifactId: null,
   versionId: null,
@@ -63,10 +64,21 @@ observe((get, set) => {
   const versionId = get(versionActiveIdAtom);
   const isLoading = get(previewerIsLoadingAtom);
   if (teamId && artifactId && versionId && !isLoading) {
-    set(lastSuccessfulLoadingConfigAtom, {
+    set(lastSuccessfulLoadedConfigAtom, {
       teamId: teamId,
       artifactId: artifactId,
       versionId: versionId,
     });
   }
 });
+
+export const previewerRenderConfigAtom = atom<RedocRawOptions>(() => ({
+  hideDownloadButton: true,
+  expandResponses: "200,201",
+  pathInMiddlePanel: true,
+  showObjectSchemaExamples: true,
+  showExtensions: true,
+  hideSecuritySection: true,
+  disableSearch: true,
+  nativeScrollbars: true,
+}));

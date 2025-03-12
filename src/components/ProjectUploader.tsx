@@ -1,10 +1,14 @@
 import yaml from "js-yaml";
+import { useAtom } from "jotai";
+
 import { useState, useCallback } from "react";
 import { RedocStandalone } from "redoc";
+import { previewerRenderConfigAtom } from "../atoms/previewerAtom";
 
 export const ProjectUploader = () => {
   const [spec, setSpec] = useState<object | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [config] = useAtom(previewerRenderConfigAtom);
 
   const handleFileUpload = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +34,7 @@ export const ProjectUploader = () => {
   return (
     <div>
       {spec ? (
-        <RedocStandalone
-          spec={spec}
-          options={{
-            nativeScrollbars: true,
-            theme: { colors: { primary: { main: "#1e88e5" } } },
-          }}
-        />
+        <RedocStandalone spec={spec} options={config} />
       ) : (
         <div className="flex items-center justify-center h-screen">
           <div className="text-left">

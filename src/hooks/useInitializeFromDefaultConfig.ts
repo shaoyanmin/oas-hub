@@ -10,7 +10,7 @@ import {
   changelogVersionAtom,
   versionActiveIdAtom,
 } from "../atoms/changelogAtom";
-import { lastSuccessfulLoadingConfigAtom } from "../atoms/previewerAtom";
+import { lastSuccessfulLoadedConfigAtom } from "../atoms/previewerAtom";
 import { useAtom } from "jotai";
 
 export function useInitializeFromDefaultConfig() {
@@ -26,7 +26,7 @@ export function useInitializeFromDefaultConfig() {
   const [teamActiveId, setTeamActiveId] = useAtom(teamActiveIdAtom);
   const [artifactActiveId, setArtifactActiveId] = useAtom(artifactActiveIdAtom);
   const [versionActiveId, setVersionActiveId] = useAtom(versionActiveIdAtom);
-  const [lastConfig] = useAtom(lastSuccessfulLoadingConfigAtom);
+  const [lastConfig] = useAtom(lastSuccessfulLoadedConfigAtom);
 
   useEffect(() => {
     const { teamId, artifactId, versionId } = lastConfig || {};
